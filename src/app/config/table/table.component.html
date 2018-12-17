@@ -1,0 +1,18 @@
+<table class="table" >
+    <thead *ngIf="bases[0].buy.toFixed(4) !== 'NaN'">
+        <tr>
+            <th scope="col">Currency</th>
+            <th scope="col">Buy</th>
+            <th scope="col">Sell</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container  *ngFor="let item of bases" >
+            <tr *ngIf="item.buy.toFixed(4) !== '0.9500' && item.buy.toFixed(4) !== 'NaN'">
+              <td>{{item.curr}}</td>
+              <td>{{item.buy.toFixed(4)}}</td>
+              <td>{{item.sell.toFixed(4)}}</td>
+            </tr>
+          </ng-container>
+    </tbody>
+  </table>

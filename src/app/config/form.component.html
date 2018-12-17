@@ -1,0 +1,33 @@
+<form  [formGroup]="getRates">
+  <div class="form-group">
+    <div class="row" style="margin-bottom:20px ">
+
+          <select
+            class="form-control"
+            name="bases"
+            formControlName="bases"
+            placeholder="Select Currency"
+            [value]="'GBP'"
+           >
+              <option *ngFor="let item of bases" [value]="item.curr">{{item.curr}} </option>
+          </select>
+
+    </div>
+    <div class="row">
+
+          <input
+            name="date"
+            type="text"
+            class="form-control"
+            formControlName="date"
+            [value]="today"
+            bsDatepicker>
+
+    </div>
+  </div>
+<div class="row"><button class="btn btn-primary" type="submit" (click)="showConfig()"> Get rates</button></div>
+
+</form>
+
+
+

@@ -23,7 +23,6 @@ export class TableComponent implements OnInit {
     this.currency = this.configService.currency;
     this.textFilter = 'A-Z';
   }
-
   sortByAZ() {
     if (!this.controlAZ) {
       this.bases.sort((a, b) => a.curr.localeCompare(b.curr));

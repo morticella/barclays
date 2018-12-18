@@ -1,7 +1,7 @@
 <table class="table" >
     <thead *ngIf="bases[0].buy.toFixed(4) !== 'NaN'">
         <tr>
-            <th scope="col">Currency <a (click)="sortByAZ()"><span class="caret" style="cursor: pointer;">AZ</span></a></th>
+            <th scope="col">Currency <a (click)="sortByAZ()"><span class="caret" style="cursor: pointer;">{{ textFilter }}</span></a></th>
             <th scope="col">Buy</th>
             <th scope="col">Sell</th>
         </tr>

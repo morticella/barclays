@@ -14,8 +14,6 @@ export class TableComponent implements OnInit {
   controlAZ: boolean;
   textFilter: string;
 
-
-
   constructor(private configService: ConfigService) { }
 
   ngOnInit() {

@@ -63,10 +63,10 @@ export class FormComponent implements OnInit {
         .subscribe(
           (data: Config) => this.config = { ...data },
           error => this.error = error,
-          () => this.getPromiseData()
+          () => this.updateBuySellPrice()
         );
   }
-  getPromiseData() {
+  updateBuySellPrice() {
     this.i = 0;
         for (const value of this.bases) {
           if (this.config) {

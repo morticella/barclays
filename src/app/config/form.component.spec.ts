@@ -34,8 +34,19 @@ describe('FormComponent', () => {
     fixture.detectChanges();
     configService = fixture.debugElement.injector.get(ConfigService) ;
     expect (configService.tableData).toEqual(component.bases);
-    console.log(component.getRates.get('bases').value);
+
   });
+  it('should update bases in component', async(() => {
+    fixture = TestBed.createComponent(FormComponent);
+    component = fixture.componentInstance;
+    configService = fixture.debugElement.componentInstance ;
+    const spy = spyOn(component, 'showConfig').and.returnValue(configService.tableData['GBP'].buy);
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect (configService.tableData['GBP'].buy).toEqual(0.9500);
+    });
+
+  }));
   it('should create', () => {
     expect(component).toBeTruthy();
   });

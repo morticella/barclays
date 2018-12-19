@@ -19,7 +19,7 @@ export class TableComponent implements OnInit {
   ngOnInit() {
     this.bases = this.configService.tableData;
     this.currency = this.configService.currency;
-    this.textFilter = 'A-Z';
+    this.textFilter = '^';
   }
   sortByAZ() {
     if (!this.controlAZ) {

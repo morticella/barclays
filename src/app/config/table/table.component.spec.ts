@@ -39,20 +39,19 @@ describe('FormComponent', () => {
     expect (configService.tableData).toEqual(component.bases);
 
   });
-  it('check - 5%', async(() => {
+  it('check - 5%', () => {
     fixture = TestBed.createComponent(FormComponent);
     fixture.detectChanges();
     configService.tableData[0].buy = config.rates - (config.rates / 100 * 5);
     expect (configService.tableData[0].buy).toEqual(0.95);
+  });
 
-  }));
-
-  it('check + 5%', async(() => {
+  it('check + 5%', () => {
     fixture = TestBed.createComponent(FormComponent);
     fixture.detectChanges();
     configService.tableData[0].sell = config.rates + (config.rates / 100 * 5);
     expect (configService.tableData[0].sell).toEqual(1.05);
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

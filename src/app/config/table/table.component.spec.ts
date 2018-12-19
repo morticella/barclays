@@ -39,7 +39,6 @@ describe('FormComponent', () => {
     fixture = TestBed.createComponent(TableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    configService = fixture.debugElement.injector.get(ConfigService) ;
     component.bases.sort((a, b) => a.curr.localeCompare(b.curr));
     expect (component.bases[0].curr).toEqual('AUD');
     component.bases.reverse();
@@ -50,7 +49,6 @@ describe('FormComponent', () => {
     fixture = TestBed.createComponent(TableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    configService = fixture.debugElement.injector.get(ConfigService) ;
     component.bases.sort((a, b) => a.curr.localeCompare(b.curr));
     component.bases.reverse();
     expect (component.bases[0].curr).toEqual('USD');

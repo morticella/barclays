@@ -1,23 +1,27 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed} from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-
 import { FormComponent } from './form.component';
 import { ConfigService } from './config.service';
 
 describe('FormComponent', () => {
-
   let component: FormComponent;
   let fixture: ComponentFixture<FormComponent>;
   let configService: ConfigService;
+  const config = {
+    'base': 'GBP',
+    'date': '2018-10-28',
+    'rates': 1
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+
       ],
-      declarations: [ FormComponent ]
+      declarations: [ FormComponent]
     })
     .compileComponents();
   }));
@@ -26,7 +30,6 @@ describe('FormComponent', () => {
     fixture = TestBed.createComponent(FormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-
   });
   it('should update bases in component', () => {
     fixture = TestBed.createComponent(FormComponent);
@@ -36,20 +39,21 @@ describe('FormComponent', () => {
     expect (configService.tableData).toEqual(component.bases);
 
   });
-  it('should update bases in component', async(() => {
+  it('check - 5%', () => {
     fixture = TestBed.createComponent(FormComponent);
-    component = fixture.componentInstance;
-    configService = fixture.debugElement.componentInstance ;
-    const spy = spyOn(component, 'showConfig').and.returnValue(configService.tableData['GBP'].buy);
     fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect (configService.tableData['GBP'].buy).toEqual(0.9500);
-    });
+    configService.tableData[0].buy = config.rates - (config.rates / 100 * 5);
+    expect (configService.tableData[0].buy).toEqual(0.95);
+  });
 
-  }));
+  it('check + 5%', () => {
+    fixture = TestBed.createComponent(FormComponent);
+    fixture.detectChanges();
+    configService.tableData[0].sell = config.rates + (config.rates / 100 * 5);
+    expect (configService.tableData[0].sell).toEqual(1.05);
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
-
-
